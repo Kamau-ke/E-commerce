@@ -11,7 +11,7 @@
     <div class="w-full max-w-md">
         <!-- Logo -->
         <div class="text-center mb-8">
-            <a href="ecommerce-home.html" class="inline-block">
+            <a href="{{route('home')}}" class="inline-block">
                 <h1 class="text-4xl font-bold text-indigo-600 mb-2">ModernShop</h1>
             </a>
             <p class="text-gray-600">Welcome back! Please login to your account</p>
@@ -44,7 +44,8 @@
             </div>
 
             <!-- Login Form -->
-            <form class="space-y-4">
+            <form class="space-y-4" action="{{ route('login') }}" method="POST">
+                @csrf
                 <!-- Email Input -->
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700 mb-2">

@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - ModernShop</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-gradient-to-br from-indigo-50 via-white to-purple-50 min-h-screen flex items-center justify-center p-4">
     <div class="w-full max-w-md">
         <!-- Logo -->
         <div class="text-center mb-8">
-            <a href="ecommerce-home.html" class="inline-block">
+            <a href="{{ route('home') }}" class="inline-block">
                 <h1 class="text-4xl font-bold text-indigo-600 mb-2">ModernShop</h1>
             </a>
             <p class="text-gray-600">Create your account and start shopping</p>
@@ -44,7 +45,10 @@
             </div>
 
             <!-- Signup Form -->
-            <form class="space-y-4">
+            <form class="space-y-4" action="{{ route('registerUser') }}" method="POST">
+
+                @csrf
+               
                 <!-- Full Name Input -->
                 <div>
                     <label for="fullname" class="block text-sm font-medium text-gray-700 mb-2">
@@ -57,7 +61,7 @@
                         <input 
                             type="text" 
                             id="fullname" 
-                            name="fullname"
+                            name="name"
                             placeholder="John Doe"
                             class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
                             required
@@ -125,7 +129,7 @@
                         <input 
                             type="password" 
                             id="confirmPassword" 
-                            name="confirmPassword"
+                            name="password_confirmation"
                             placeholder="Confirm your password"
                             class="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
                             required
