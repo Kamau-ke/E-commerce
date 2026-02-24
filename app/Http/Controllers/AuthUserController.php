@@ -35,7 +35,7 @@ class AuthUserController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('home')->with('message', 'Account created successfully');
+        return redirect()->route('home')->with('email', 'Account created successfully');
 
 
     }

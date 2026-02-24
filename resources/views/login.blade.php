@@ -43,6 +43,17 @@
                 </div>
             </div>
 
+                   @error('message')
+                     <div class="mb-6 bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg">
+                        <div class="flex items-start">
+                        <i class="fas fa-exclamation-circle text-red-500 mt-0.5 mr-3"></i>
+                        <div class="flex-1">
+                            <p class="font-semibold mb-1">{{ $message }}</p>
+                        </div>
+                        </div>
+                    </div>
+                @enderror 
+
             <!-- Login Form -->
             <form class="space-y-4" action="{{ route('login') }}" method="POST">
                 @csrf
