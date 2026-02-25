@@ -13,3 +13,5 @@ Route::post('/user/register', [AuthUserController::class, 'register'])->name('re
 Route::get('/user/login', [AuthUserController::class, 'showLogin'])->name('showLogin');
 Route::post('/users/login', [AuthUserController::class, 'login'])->name('login');
 
+Route::view('/admin', 'admin.dashboard');
+
