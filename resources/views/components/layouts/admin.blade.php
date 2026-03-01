@@ -10,6 +10,8 @@
 </head>
 <body class="bg-gray-100">
     <!-- Top Navigation Bar -->
+    <x-admin.navbar/>
+    <x-admin.sidebar/>
     {{ $slot }}
 </body>
 </html>
