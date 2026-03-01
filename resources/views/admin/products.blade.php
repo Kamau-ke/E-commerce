@@ -153,4 +153,124 @@
                     </div>
                 </div>
             </div>
+
+            <div id="productModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="p-6 border-b flex justify-between items-center sticky top-0 bg-white">
+                    <h3 class="text-2xl font-bold text-gray-800" id="modalTitle">Add New Product</h3>
+                    <button onclick="closeProductModal()" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                
+                <form id="productForm" class="p-6" method="POST"  enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" id="productId" name="product_id">
+                    <input type="hidden" id="formMethod" name="_method" value="POST">
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Product Name -->
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Product Name *</label>
+                            <input type="text" name="name" id="productName" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Enter product name">
+                        </div>
+
+                        <!-- SKU -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">SKU *</label>
+                            <input type="text" name="sku" id="productSKU" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="e.g., PRD-001">
+                        </div>
+
+                        <!-- Category -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Category *</label>
+                            <select name="category_id" id="productCategory" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                <option value="">Select Category</option>
+                                <option value="1">Electronics</option>
+                                <option value="2">Clothing</option>
+                                <option value="3">Footwear</option>
+                                <option value="4">Accessories</option>
+                            </select>
+                        </div>
+
+                        <!-- Price -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Price ($) *</label>
+                            <input type="number" name="price" id="productPrice" required step="0.01" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="0.00">
+                        </div>
+
+                        <!-- Sale Price -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Sale Price ($)</label>
+                            <input type="number" name="sale_price" id="productSalePrice" step="0.01" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="0.00">
+                        </div>
+
+                        <!-- Stock Quantity -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Stock Quantity *</label>
+                            <input type="number" name="stock" id="productStock" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="0">
+                        </div>
+
+                        <!-- Status -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Status *</label>
+                            <select name="status" id="productStatus" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                                <option value="draft">Draft</option>
+                            </select>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Description *</label>
+                            <textarea name="description" id="productDescription" required rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Enter product description"></textarea>
+                        </div>
+
+                        <!-- Product Images -->
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Product Images</label>
+                            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-indigo-500 transition">
+                                <input type="file" name="images[]" id="productImages" multiple accept="image/*" class="hidden" onchange="previewImages(event)">
+                                <label for="productImages" class="cursor-pointer">
+                                    <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-2"></i>
+                                    <p class="text-gray-600">Click to upload or drag and drop</p>
+                                    <p class="text-sm text-gray-400 mt-1">PNG, JPG, GIF up to 10MB</p>
+                                </label>
+                            </div>
+                            <div id="imagePreview" class="grid grid-cols-4 gap-4 mt-4"></div>
+                        </div>
+
+                        <!-- Additional Fields -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Brand</label>
+                            <input type="text" name="brand" id="productBrand" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Brand name">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Weight (kg)</label>
+                            <input type="number" name="weight" id="productWeight" step="0.01" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="0.00">
+                        </div>
+
+                        <!-- Tags -->
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Tags (comma separated)</label>
+                            <input type="text" name="tags" id="productTags" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="e.g., trending, sale, new arrival">
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="flex justify-end space-x-4 mt-6 pt-6 border-t">
+                        <button type="button" onclick="closeProductModal()" class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition">
+                            Cancel
+                        </button>
+                        <button type="submit" class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
+                            <i class="fas fa-save mr-2"></i> Save Product
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </x-layouts.admin>

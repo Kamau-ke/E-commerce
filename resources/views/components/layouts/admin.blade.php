@@ -17,7 +17,7 @@
              {{ $slot }}
         </div>
     </main>
-   
+   <script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>
 
