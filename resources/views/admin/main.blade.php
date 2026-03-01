@@ -1,5 +1,5 @@
 <x-layouts.admin>
-<div id="dashboard-section" class="content-section hidden">
+<div id="dashboard-section" class="content-section ">
                 <h2 class="text-2xl font-bold text-gray-800 mb-6">Dashboard Overview</h2>
                 
                 <!-- Stats Cards -->

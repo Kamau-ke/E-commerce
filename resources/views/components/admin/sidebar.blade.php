@@ -2,13 +2,13 @@
         <div class="p-4 h-full overflow-y-auto">
             <nav class="space-y-1">
                 <!-- Dashboard -->
-                <a href="#dashboard" onclick="showSection('dashboard')" class="nav-link flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition">
+                <a href="{{ route('admin.dashboard') }}" class="nav-link flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition">
                     <i class="fas fa-home mr-3 text-lg"></i>
                     <span class="font-medium">Dashboard</span>
                 </a>
                 
                 <!-- Products -->
-                <a href="#" onclick="showSection('products')" class="nav-link active flex items-center px-4 py-3 bg-indigo-50 text-indigo-600 rounded-lg transition">
+                <a href="{{ route('admin.products') }}"  class="nav-link active flex items-center px-4 py-3 bg-indigo-50 text-indigo-600 rounded-lg transition">
                     <i class="fas fa-box mr-3 text-lg"></i>
                     <span class="font-medium">Products</span>
                 </a>

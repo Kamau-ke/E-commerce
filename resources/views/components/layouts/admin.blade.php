@@ -12,7 +12,12 @@
     <!-- Top Navigation Bar -->
     <x-admin.navbar/>
     <x-admin.sidebar/>
-    {{ $slot }}
+    <main class="lg:ml-64 pt-16 min-h-screen">
+        <div class="p-6">
+             {{ $slot }}
+        </div>
+    </main>
+   
 </body>
 </html>
 

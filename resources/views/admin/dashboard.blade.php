@@ -6,13 +6,12 @@
     <div id="overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden" onclick="toggleSidebar()"></div>
 
     <!-- Main Content -->
-    <main class="lg:ml-64 pt-16 min-h-screen">
-        <div class="p-6">
+    
             <!-- Dashboard Section -->
             
 
             <!-- Products Section -->
-            <x-admin.products/>
+           
 
             <!-- Other sections placeholders -->
             <div id="categories-section" class="content-section hidden">
