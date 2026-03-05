@@ -102,13 +102,13 @@
                     <div class="bg-white rounded-lg shadow p-6">
                         <h3 class="text-lg font-semibold mb-4">Quick Actions</h3>
                         <div class="space-y-3">
-                            <button onclick="showSection('products'); showAddProductModal()" class="w-full bg-indigo-600 text-white px-4 py-3 rounded-lg hover:bg-indigo-700 transition">
+                            <button  class="w-full bg-indigo-600 text-white px-4 py-3 rounded-lg hover:bg-indigo-700 transition">
                                 <i class="fas fa-plus mr-2"></i> Add Product
                             </button>
-                            <button onclick="showSection('orders')" class="w-full bg-gray-100 text-gray-700 px-4 py-3 rounded-lg hover:bg-gray-200 transition">
+                            <button  class="w-full bg-gray-100 text-gray-700 px-4 py-3 rounded-lg hover:bg-gray-200 transition">
                                 <i class="fas fa-shopping-cart mr-2"></i> View Orders
                             </button>
-                            <button onclick="showSection('customers')" class="w-full bg-gray-100 text-gray-700 px-4 py-3 rounded-lg hover:bg-gray-200 transition">
+                            <button class="w-full bg-gray-100 text-gray-700 px-4 py-3 rounded-lg hover:bg-gray-200 transition">
                                 <i class="fas fa-users mr-2"></i> View Customers
                             </button>
                         </div>
