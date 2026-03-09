@@ -31,7 +31,7 @@
                 <div class="flex items-center space-x-6">
                     <a href="{{ route('showLogin') }}" class="hidden md:block text-gray-700 hover:text-indigo-600">Login</a>
                     <a href="{{route('showRegister')}}" class="hidden md:block text-gray-700 hover:text-indigo-600">Sign Up</a>
-                    <a href="#" class="text-gray-700 hover:text-indigo-600 relative">
+                    <a href="{{ route('user.cart') }}" class="text-gray-700 hover:text-indigo-600 relative">
                         <i class="fas fa-shopping-cart text-xl"></i>
                         <span class="absolute -top-2 -right-2 bg-indigo-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
                     </a>
