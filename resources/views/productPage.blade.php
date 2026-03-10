@@ -16,41 +16,8 @@
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <a href="ecommerce-home.html">
-                        <h1 class="text-2xl font-bold text-indigo-600">ModernShop</h1>
-                    </a>
-                </div>
-                
-                <!-- Search Bar -->
-                <div class="hidden md:flex flex-1 max-w-md mx-8">
-                    <div class="relative w-full">
-                        <input type="text" placeholder="Search products..." 
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                        <i class="fas fa-search absolute right-3 top-3 text-gray-400"></i>
-                    </div>
-                </div>
-                
-                <!-- Nav Links -->
-                <div class="flex items-center space-x-6">
-                    <a href="ecommerce-home.html" class="text-gray-700 hover:text-indigo-600">Home</a>
-                    <a href="#" class="text-gray-700 hover:text-indigo-600">Shop</a>
-                    <a href="cart.html" class="text-gray-700 hover:text-indigo-600 relative">
-                        <i class="fas fa-shopping-cart text-xl"></i>
-                        <span class="absolute -top-2 -right-2 bg-indigo-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
-                    </a>
-                    <a href="login.blade.php" class="text-gray-700 hover:text-indigo-600">
-                        <i class="fas fa-user text-xl"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
+    
+    <x-front.header/>
     <!-- Breadcrumb -->
     <div class="bg-white border-b">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">

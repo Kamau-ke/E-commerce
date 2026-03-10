@@ -10,32 +10,8 @@
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <a href="ecommerce-home.html">
-                        <h1 class="text-2xl font-bold text-indigo-600">ModernShop</h1>
-                    </a>
-                </div>
-                
-                <!-- Nav Links -->
-                <div class="flex items-center space-x-6">
-                    <a href="ecommerce-home.html" class="text-gray-700 hover:text-indigo-600">Home</a>
-                    <a href="#" class="text-gray-700 hover:text-indigo-600">Shop</a>
-                    <a href="#" class="relative text-indigo-600 font-medium">
-                        <i class="fas fa-shopping-cart text-xl"></i>
-                        <span class="absolute -top-2 -right-2 bg-indigo-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
-                    </a>
-                    <a href="login.blade.php" class="text-gray-700 hover:text-indigo-600">
-                        <i class="fas fa-user text-xl"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
+    
+        <x-front.header/>
     <!-- Breadcrumb -->
     <div class="bg-white border-b">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -354,11 +330,8 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-8 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p>&copy; 2026 ModernShop. All rights reserved.</p>
-        </div>
-    </footer>
+
+    <x-front.footer/>
 
     <!-- Remove Item Confirmation Modal -->
     <div id="removeModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50">

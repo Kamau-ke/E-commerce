@@ -10,38 +10,8 @@
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <h1 class="text-2xl font-bold text-indigo-600">ModernShop</h1>
-                </div>
-                
-                <!-- Search Bar -->
-                <div class="hidden md:flex flex-1 max-w-md mx-8">
-                    <div class="relative w-full">
-                        <input type="text" placeholder="Search products..." 
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                        <i class="fas fa-search absolute right-3 top-3 text-gray-400"></i>
-                    </div>
-                </div>
-                
-                <!-- Nav Links -->
-                <div class="flex items-center space-x-6">
-                    <a href="{{ route('showLogin') }}" class="hidden md:block text-gray-700 hover:text-indigo-600">Login</a>
-                    <a href="{{route('showRegister')}}" class="hidden md:block text-gray-700 hover:text-indigo-600">Sign Up</a>
-                    <a href="{{ route('user.cart') }}" class="text-gray-700 hover:text-indigo-600 relative">
-                        <i class="fas fa-shopping-cart text-xl"></i>
-                        <span class="absolute -top-2 -right-2 bg-indigo-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
-                    </a>
-                    <a href="#" class="text-gray-700 hover:text-indigo-600">
-                        <i class="fas fa-user text-xl"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    
+    <x-front.header/>
 
     <!-- Hero Section -->
     <section class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
@@ -311,56 +281,6 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <h3 class="text-white text-xl font-bold mb-4">ModernShop</h3>
-                    <p class="text-gray-400 mb-4">Your one-stop destination for quality products and amazing deals.</p>
-                    <div class="flex gap-4">
-                        <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-indigo-600 transition">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-indigo-600 transition">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-indigo-600 transition">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="text-white font-semibold mb-4">Shop</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-white transition">Women's Fashion</a></li>
-                        <li><a href="#" class="hover:text-white transition">Men's Fashion</a></li>
-                        <li><a href="#" class="hover:text-white transition">Accessories</a></li>
-                        <li><a href="#" class="hover:text-white transition">Sale</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-semibold mb-4">Customer Service</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-white transition">Contact Us</a></li>
-                        <li><a href="#" class="hover:text-white transition">Shipping Info</a></li>
-                        <li><a href="#" class="hover:text-white transition">Returns</a></li>
-                        <li><a href="#" class="hover:text-white transition">FAQ</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-semibold mb-4">Company</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-white transition">About Us</a></li>
-                        <li><a href="#" class="hover:text-white transition">Careers</a></li>
-                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-gray-800 pt-8 text-center">
-                <p>&copy; 2026 ModernShop. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <x-front.footer/>
 </body>
 </html>
