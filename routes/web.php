@@ -22,8 +22,7 @@ Route::get('/user/cart',[CartController::class, 'index'])->name('user.cart');
 Route::get('/products', [ProductController::class, 'index'])->name('product.index');
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
 
-Route::view('/admin', 'admin.dashboard');
-Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+Route::get('/admin', [DashboardController::class, 'index'])->name('admin.dashboard');
 Route::get("/admin/products", [ProductController::class, 'index'])->name('admin.products');
 
 

@@ -16,7 +16,7 @@
     <div class="bg-white border-b">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div class="flex items-center space-x-2 text-sm">
-                <a href="ecommerce-home.html" class="text-gray-500 hover:text-indigo-600">Home</a>
+                <a href="{{ route('home') }}" class="text-gray-500 hover:text-indigo-600">Home</a>
                 <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
                 <span class="text-gray-900 font-medium">Shopping Cart</span>
             </div>

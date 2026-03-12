@@ -169,9 +169,6 @@
                     <button onclick="addToCart()" class="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition">
                         <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
                     </button>
-                    <button class="w-full bg-gray-100 text-gray-900 py-3 rounded-lg font-semibold hover:bg-gray-200 transition">
-                        <i class="fas fa-bolt mr-2"></i> Buy Now
-                    </button>
                     <button onclick="toggleWishlist()" id="wishlistBtn" class="w-full border-2 border-gray-300 text-gray-700 py-3 rounded-lg font-semibold hover:border-red-500 hover:text-red-500 transition">
                         <i class="far fa-heart mr-2"></i> Add to Wishlist
                     </button>
@@ -596,9 +593,9 @@
                     
                     <div class="flex space-x-3">
                         <button onclick="closeSuccessModal()" class="flex-1 border-2 border-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-50 transition">
-                            Continue Shopping
+                            Close
                         </button>
-                        <a href="cart.html" class="flex-1 bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">
+                        <a href="{{ route('user.cart') }}" class="flex-1 bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">
                             View Cart
                         </a>
                     </div>
