@@ -27,6 +27,10 @@ class AuthUserController extends Controller
             'password'=>'required|min:8|confirmed'
         ]);
 
+        // if(!$validated){
+        //     return redirect()->back()->with('errors');
+        // }
+
        $user=User::create([
         'name'=>$request->name,
         'email'=>$request->email,
