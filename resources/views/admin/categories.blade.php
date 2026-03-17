@@ -107,33 +107,7 @@
             </div>
 
             <!-- Filters & Search -->
-            <div class="bg-white rounded-lg shadow p-4 mb-6">
-                <form method="GET">
-                    <div class="grid md:grid-cols-4 gap-4">
-                        <input type="text" 
-                               name="search" 
-                               value="{{ request('search') }}"
-                               placeholder="Search categories..." 
-                               class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                        
-                        <select name="status" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                            <option value="">All Status</option>
-                            <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Active</option>
-                            <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
-                        </select>
-                        
-                        <select name="featured" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                            <option value="">All Categories</option>
-                            <option value="1" {{ request('featured') == '1' ? 'selected' : '' }}>Featured Only</option>
-                            <option value="0" {{ request('featured') == '0' ? 'selected' : '' }}>Non-Featured</option>
-                        </select>
-                        
-                        <button type="submit" class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition">
-                            <i class="fas fa-filter mr-2"></i> Apply Filters
-                        </button>
-                    </div>
-                </form>
-            </div>
+           <x-admin.filter/>
 
             <!-- Categories Table -->
             <div class="bg-white rounded-lg shadow overflow-hidden">
