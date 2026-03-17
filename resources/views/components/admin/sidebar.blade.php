@@ -14,40 +14,54 @@
                 </a>
                 
                 <!-- Categories -->
-                <a href="#" onclick="showSection('categories')" class="nav-link flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition">
+                <a href="{{ route('admin.categories') }}"  class="nav-link flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition">
                     <i class="fas fa-tags mr-3 text-lg"></i>
                     <span class="font-medium">Categories</span>
                 </a>
                 
                 <!-- Orders -->
-                <a href="#" onclick="showSection('orders')" class="nav-link flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition">
+                <a href="#"  class="nav-link flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition">
                     <i class="fas fa-shopping-cart mr-3 text-lg"></i>
                     <span class="font-medium">Orders</span>
                 </a>
                 
                 <!-- Customers -->
-                <a href="#" onclick="showSection('customers')" class="nav-link flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition">
+                <a href="#" class="nav-link flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition">
                     <i class="fas fa-users mr-3 text-lg"></i>
                     <span class="font-medium">Customers</span>
                 </a>
                 
                 <!-- Analytics -->
-                <a href="#" onclick="showSection('analytics')" class="nav-link flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition">
+                <a href="#"  class="nav-link flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition">
                     <i class="fas fa-chart-line mr-3 text-lg"></i>
                     <span class="font-medium">Analytics</span>
                 </a>
                 
                 <!-- Reviews -->
-                <a href="#" onclick="showSection('reviews')" class="nav-link flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition">
+                <a href="#"  class="nav-link flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition">
                     <i class="fas fa-star mr-3 text-lg"></i>
                     <span class="font-medium">Reviews</span>
                 </a>
                 
                 <!-- Settings -->
-                <a href="#" onclick="showSection('settings')" class="nav-link flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition">
+                <a href="#" class="nav-link flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition">
                     <i class="fas fa-cog mr-3 text-lg"></i>
                     <span class="font-medium">Settings</span>
                 </a>
             </nav>
         </div>
     </aside>
+
+    @push('scripts')
+        <script>
+              function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
+
+        document.getElementById('menuToggle').addEventListener('click', toggleSidebar);
+        </script>
+    @endpush

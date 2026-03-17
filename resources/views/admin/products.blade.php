@@ -1,4 +1,4 @@
-<x-layouts.admin>
+<x-layouts.admin title="Products">
     <div id="products-section" class="content-section">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-2xl font-bold text-gray-800">Products Management</h2>
@@ -13,8 +13,9 @@
                         <input type="text" placeholder="Search products..." class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
                         <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
                             <option>All Categories</option>
-                            <option>Electronics</option>
-                            <option>Clothing</option>
+                            <option>Men Fashion</option>
+                            <option>Women Fashion</option>
+                            <option>Footware</option>
                             <option>Accessories</option>
                         </select>
                         <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
@@ -164,7 +165,7 @@
                     </button>
                 </div>
                 
-                <form id="productForm" class="p-6" method="POST"  enctype="multipart/form-data">
+                <form id="productForm" class="p-6"  method="POST"  enctype="multipart/form-data" >
                     @csrf
                     <input type="hidden" id="productId" name="product_id">
                     <input type="hidden" id="formMethod" name="_method" value="POST">
@@ -187,8 +188,8 @@
                             <label class="block text-sm font-medium text-gray-700 mb-2">Category *</label>
                             <select name="category_id" id="productCategory" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
                                 <option value="">Select Category</option>
-                                <option value="1">Electronics</option>
-                                <option value="2">Clothing</option>
+                                <option value="1">Men Fashion</option>
+                                <option value="2">Women Fashion</option>
                                 <option value="3">Footwear</option>
                                 <option value="4">Accessories</option>
                             </select>
@@ -273,4 +274,130 @@
             </div>
         </div>
     </div>
+    
+    @push('scripts')
+        <script>
+             function showAddProductModal() {
+            document.getElementById('modalTitle').textContent = 'Add New Product';
+            document.getElementById('productForm').reset();
+            document.getElementById('productId').value = '';
+            document.getElementById('formMethod').value = 'POST';
+            
+            document.getElementById('imagePreview').innerHTML = '';
+            document.getElementById('productModal').classList.remove('hidden');
+        }
+
+        function editProduct(id) {
+            // In real implementation, fetch product data via AJAX
+            document.getElementById('modalTitle').textContent = 'Edit Product';
+            document.getElementById('productId').value = id;
+            document.getElementById('formMethod').value = 'PUT';
+          
+            
+            // Load product data (sample)
+            document.getElementById('productName').value = 'Classic White Sneakers';
+            document.getElementById('productSKU').value = 'SNK-001';
+            document.getElementById('productCategory').value = '3';
+            document.getElementById('productPrice').value = '79.99';
+            document.getElementById('productStock').value = '45';
+            document.getElementById('productStatus').value = 'active';
+            document.getElementById('productDescription').value = 'Comfortable and stylish white sneakers';
+            
+            document.getElementById('productModal').classList.remove('hidden');
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').classList.add('hidden');
+        }
+
+        // View Product
+        function viewProduct(id) {
+            // In real implementation, fetch product data via AJAX
+            const content = `
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <div class="bg-gray-200 rounded-lg h-64 flex items-center justify-center mb-4">
+                            <i class="fas fa-image text-gray-400 text-6xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-4">Classic White Sneakers</h4>
+                        <div class="space-y-3">
+                            <div><span class="font-medium">SKU:</span> SNK-001</div>
+                            <div><span class="font-medium">Category:</span> Footwear</div>
+                            <div><span class="font-medium">Price:</span> $79.99</div>
+                            <div><span class="font-medium">Stock:</span> 45 units</div>
+                            <div><span class="font-medium">Status:</span> <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Active</span></div>
+                            <div><span class="font-medium">Description:</span><br>Comfortable and stylish white sneakers perfect for everyday wear.</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('productDetailsContent').innerHTML = content;
+            document.getElementById('viewProductModal').classList.remove('hidden');
+        }
+
+        function closeViewProductModal() {
+            document.getElementById('viewProductModal').classList.add('hidden');
+        }
+
+        // Delete Product
+        let deleteProductId = null;
+
+        function deleteProduct(id) {
+            deleteProductId = id;
+            document.getElementById('deleteModal').classList.remove('hidden');
+        }
+
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').classList.add('hidden');
+            deleteProductId = null;
+        }
+
+        function confirmDelete() {
+            if (deleteProductId) {
+                // In real implementation, send DELETE request via AJAX
+                console.log('Deleting product:', deleteProductId);
+                
+                // Simulate success
+                closeDeleteModal();
+                alert('Product deleted successfully!');
+                
+                // Remove row from table (for demo)
+                // In real app, reload the table data
+            }
+        }
+
+        // Image Preview
+        function previewImages(event) {
+            const preview = document.getElementById('imagePreview');
+            preview.innerHTML = '';
+            
+            const files = event.target.files;
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    const div = document.createElement('div');
+                    div.className = 'relative';
+                    div.innerHTML = `
+                        <img src="${e.target.result}" class="w-full h-24 object-cover rounded-lg">
+                        <button type="button" onclick="removeImage(this)" class="absolute top-1 right-1 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600">
+                            <i class="fas fa-times text-xs"></i>
+                        </button>
+                    `;
+                    preview.appendChild(div);
+                }
+                
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function removeImage(button) {
+            button.parentElement.remove();
+        }
+        </script>
+    @endpush
 </x-layouts.admin>

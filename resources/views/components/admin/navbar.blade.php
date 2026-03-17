@@ -41,3 +41,16 @@
             </div>
         </div>
     </nav>
+
+    @push('scripts')
+        <script>
+             document.getElementById('profileToggle').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('profileDropdown').classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', function() {
+            document.getElementById('profileDropdown').classList.add('hidden');
+        });
+        </script>
+    @endpush

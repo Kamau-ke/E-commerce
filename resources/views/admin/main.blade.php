@@ -1,4 +1,4 @@
-<x-layouts.admin>
+<x-layouts.admin title="Dashboard">
 <div id="dashboard-section" class="content-section ">
                 <h2 class="text-2xl font-bold text-gray-800 mb-6">Dashboard Overview</h2>
                 

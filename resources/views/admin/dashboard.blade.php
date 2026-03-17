@@ -1,4 +1,4 @@
-<x-layouts.admin>
+<x-layouts.admin title="Dashboard">
 
    
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\AuthUserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
@@ -24,6 +25,7 @@ Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.s
 
 Route::get('/admin', [DashboardController::class, 'index'])->name('admin.dashboard');
 Route::get("/admin/products", [ProductController::class, 'index'])->name('admin.products');
+Route::get('/admin/categories', [CategoryController::class, 'index'])->name('admin.categories');
 
 
 
