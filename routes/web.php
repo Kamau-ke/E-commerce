@@ -27,6 +27,8 @@ Route::get('/admin', [DashboardController::class, 'index'])->name('admin.dashboa
 Route::get("/admin/products", [ProductController::class, 'index'])->name('admin.products');
 Route::get('/admin/categories', [CategoryController::class, 'index'])->name('admin.categories');
 
+Route::post('/admin/category', [CategoryController::class,'store'])->name('categories.store');
+
 
 
 

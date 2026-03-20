@@ -356,7 +356,7 @@
                     </button>
                 </div>
                 
-                <form id="categoryForm" class="p-6" method="POST"  enctype="multipart/form-data">
+                <form id="categoryForm" class="p-6" action="{{ route('categories.store') }}" method="POST"  enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" id="categoryId" name="category_id">
                     <input type="hidden" id="formMethod" name="_method" value="POST">
@@ -374,28 +374,19 @@
                         </div>
 
                         <!-- Description -->
-                        <div>
+                        {{-- <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
                             <textarea name="description" 
                                       id="categoryDescription" 
                                       rows="3" 
                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" 
                                       placeholder="Enter category description"></textarea>
-                        </div>
+                        </div> --}}
 
-                        <!-- Slug -->
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Slug (URL)</label>
-                            <input type="text" 
-                                   name="slug" 
-                                   id="categorySlug" 
-                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" 
-                                   placeholder="category-name">
-                            <p class="text-xs text-gray-500 mt-1">Leave empty to auto-generate from name</p>
-                        </div>
-
+                       
+                       
                         <!-- Parent Category -->
-                        <div>
+                        {{-- <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Parent Category</label>
                             <select name="parent_id" 
                                     id="categoryParent" 
@@ -407,43 +398,30 @@
                                 <option value="4">Accessories</option>
                                 <option value="5">Electronics</option>
                             </select>
-                        </div>
+                        </div> --}}
 
                         <!-- Icon Selection -->
-                        <div>
+                        {{-- <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Icon</label>
                             <select name="icon" 
                                     id="categoryIcon" 
                                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                                <option value="fa-tshirt">👕 T-Shirt</option>
-                                <option value="fa-user-tie">👔 Formal Wear</option>
-                                <option value="fa-shoe-prints">👟 Shoes</option>
-                                <option value="fa-gem">💎 Accessories</option>
-                                <option value="fa-mobile-alt">📱 Electronics</option>
-                                <option value="fa-dumbbell">🏋️ Sports</option>
-                                <option value="fa-heart">❤️ Beauty</option>
-                                <option value="fa-couch">🛋️ Home</option>
-                                <option value="fa-book">📚 Books</option>
-                                <option value="fa-gamepad">🎮 Gaming</option>
-                                <option value="fa-tags">🏷️ General</option>
+                                <option value="fa-tshirt"> T-Shirt</option>
+                                <option value="fa-user-tie"> Formal Wear</option>
+                                <option value="fa-shoe-prints"> Shoes</option>
+                                <option value="fa-gem"> Accessories</option>
+                                <option value="fa-mobile-alt"> Electronics</option>
+                                <option value="fa-dumbbell">Sports</option>
+                                <option value="fa-heart"> Beauty</option>
+                                <option value="fa-couch"> Home</option>
+                                <option value="fa-book"> Books</option>
+                                <option value="fa-gamepad"> Gaming</option>
+                                <option value="fa-tags"> General</option>
                             </select>
-                        </div>
+                        </div> --}}
 
                         <!-- Color Selection -->
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Background Color</label>
-                            <div class="grid grid-cols-8 gap-2">
-                                <button type="button" onclick="selectColor('from-pink-400 to-rose-500')" class="h-12 rounded-lg bg-gradient-to-br from-pink-400 to-rose-500 border-2 border-transparent hover:border-indigo-600"></button>
-                                <button type="button" onclick="selectColor('from-blue-400 to-indigo-500')" class="h-12 rounded-lg bg-gradient-to-br from-blue-400 to-indigo-500 border-2 border-transparent hover:border-indigo-600"></button>
-                                <button type="button" onclick="selectColor('from-purple-400 to-pink-500')" class="h-12 rounded-lg bg-gradient-to-br from-purple-400 to-pink-500 border-2 border-transparent hover:border-indigo-600"></button>
-                                <button type="button" onclick="selectColor('from-amber-400 to-orange-500')" class="h-12 rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 border-2 border-transparent hover:border-indigo-600"></button>
-                                <button type="button" onclick="selectColor('from-green-400 to-emerald-500')" class="h-12 rounded-lg bg-gradient-to-br from-green-400 to-emerald-500 border-2 border-transparent hover:border-indigo-600"></button>
-                                <button type="button" onclick="selectColor('from-cyan-400 to-blue-500')" class="h-12 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-500 border-2 border-transparent hover:border-indigo-600"></button>
-                                <button type="button" onclick="selectColor('from-red-400 to-pink-500')" class="h-12 rounded-lg bg-gradient-to-br from-red-400 to-pink-500 border-2 border-transparent hover:border-indigo-600"></button>
-                                <button type="button" onclick="selectColor('from-yellow-400 to-orange-500')" class="h-12 rounded-lg bg-gradient-to-br from-yellow-400 to-orange-500 border-2 border-transparent hover:border-indigo-600"></button>
-                            </div>
-                            <input type="hidden" name="color" id="categoryColor" value="from-indigo-400 to-purple-500">
-                        </div>
+                       
 
                         <!-- Category Image -->
                         <div>
@@ -467,7 +445,7 @@
                         </div>
 
                         <!-- Display Order -->
-                        <div>
+                        {{-- <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Display Order</label>
                             <input type="number" 
                                    name="order" 
@@ -476,7 +454,7 @@
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" 
                                    placeholder="0">
                             <p class="text-xs text-gray-500 mt-1">Lower numbers appear first</p>
-                        </div>
+                        </div> --}}
 
                         <!-- Status & Featured -->
                         <div class="grid grid-cols-2 gap-4">
