@@ -360,6 +360,10 @@
                     @csrf
                     <input type="hidden" id="categoryId" name="category_id">
                     <input type="hidden" id="formMethod" name="_method" value="POST">
+
+                    {{-- display of error or success Messages --}}
+                    <div id="categoryResponse" class="hidden mb-4 px-4 py-3 rounded-lg text-sm font-medium"></div>
+
                     
                     <div class="space-y-4">
                         <!-- Category Name -->
@@ -487,7 +491,7 @@
                                 class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition">
                             Cancel
                         </button>
-                        <button type="submit" 
+                        <button type="submit" id="saveButton"
                                 class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
                             <i class="fas fa-save mr-2"></i> Save Category
                         </button>
@@ -574,7 +578,63 @@
             document.getElementById('deleteModal').classList.add('hidden');
         }
 
-        // Select color
+        // submit category
+        $('#categoryForm').on('submit', function(e) {
+            e.preventDefault();
+
+            let formData = new FormData(this);
+            let submitBtn=$('#saveButton');
+
+            $.ajax({
+                url: $(this).attr('action'),
+                method: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                beforeSend:function(){
+                    submitBtn.prop('disabled', true)
+                    .html('<i class="fas fa-spinner fa-spin mr-2"></i> Saving...');
+                },
+                success: function(response) {
+                    showCategoryMessage(response.message, 'success');
+                    $('#categoryForm')[0].reset();
+                    $('#imagePreview').addClass('hidden');
+                },
+                error: function(xhr) {
+                    if (xhr.status === 422) {
+                        // Validation errors
+                        let errors = xhr.responseJSON.errors;
+                        let messages = Object.values(errors).flat().join('<br>');
+                        showCategoryMessage(messages, 'error');
+                    } else {
+                        showCategoryMessage('Something went wrong. Please try again.', 'error');
+                    }
+                },
+
+                complete:function() {
+                     submitBtn.prop('disabled', false)
+                     .html('<i class="fas fa-save mr-2"></i> Save Category');
+                }
+            });
+        });
+
+        function showCategoryMessage(message, type) {
+            let box = $('#categoryResponse');
+            box.removeClass('hidden bg-green-100 text-green-700 bg-red-100 text-red-700');
+
+            if (type === 'success') {
+                box.addClass('bg-green-100 text-green-700');
+            } else {
+                box.addClass('bg-red-100 text-red-700');
+            }
+
+            box.html(message).removeClass('hidden');
+
+            // Auto-hide after 4 seconds
+            setTimeout(() => box.addClass('hidden'), 4000);
+
+            
+        }
    
 
       
