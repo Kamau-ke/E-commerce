@@ -17,10 +17,14 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('category_id')->constrained('categories');
             $table->string('name');
-            $table->string('price');
+            $table->integer('price');
+            $table->integer('sale_price');
             $table->string('description');
             $table->string('rating');
-
+            $table->string('brand');
+            $table->string('tags');
+            $table->double('weight')->default(0.5);
+            $table->integer('quantity')->default(1);
         });
     }
 

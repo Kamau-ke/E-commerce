@@ -158,10 +158,7 @@
                         </div>
 
                         <!-- SKU -->
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">SKU *</label>
-                            <input type="text" name="sku" id="productSKU" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="e.g., PRD-001">
-                        </div>
+                       
 
                         <!-- Category -->
                         <div>
@@ -193,15 +190,8 @@
                             <input type="number" name="stock" id="productStock" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="0">
                         </div>
 
-                        <!-- Status -->
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Status *</label>
-                            <select name="status" id="productStatus" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
-                                <option value="draft">Draft</option>
-                            </select>
-                        </div>
+                       
+                       
 
                         <!-- Description -->
                         <div class="md:col-span-2">
