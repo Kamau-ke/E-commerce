@@ -145,7 +145,7 @@
                     </button>
                 </div>
                 
-                <form id="productForm" class="p-6"  method="POST"  enctype="multipart/form-data" >
+                <form id="productForm" class="p-6" action="{{ route('product.store') }}"  method="POST"  enctype="multipart/form-data" >
                     @csrf
                     <input type="hidden" id="productId" name="product_id">
                     <input type="hidden" id="formMethod" name="_method" value="POST">
