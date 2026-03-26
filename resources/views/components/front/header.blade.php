@@ -72,11 +72,18 @@
                             Wishlist
                         </a>
                         <div class="border-t border-gray-100 mt-1 pt-1">
-                            <a href="login.blade.php"
-                               class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-red-50 hover:text-red-500 transition-colors">
-                                <i class="fas fa-sign-out-alt w-4 text-center text-gray-400"></i>
-                                Sign Out
-                            </a>
+                            <div class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-red-50 hover:text-red-500 transition-colors">
+                                <form action="{{ route('user.logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit"><i class="fas fa-sign-out-alt w-4 text-center text-gray-400"></i>
+                                        Sign Out
+                                    </button>
+                                </form>
+                            </div>
+                            
+                           
+                                
+                            
                         </div>
                     </div>
                 </div>

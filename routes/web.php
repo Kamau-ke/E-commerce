@@ -12,11 +12,12 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/user/signup', [AuthUserController::class, 'showRegister' ])->name('showRegister');
-Route::post('/user/register', [AuthUserController::class, 'register'])->name('registerUser');
+Route::post('/user/register', [AuthUserController::class, 'register'])->name('user.register');
 
 
 Route::get('/user/login', [AuthUserController::class, 'showLogin'])->name('showLogin');
-Route::post('/users/login', [AuthUserController::class, 'login'])->name('login');
+Route::post('/users/login', [AuthUserController::class, 'login'])->name('user.login');
+Route::post('/user/logout', [AuthUserController::class,'logout'])->name('user.logout');
 
 Route::get('/user/cart',[CartController::class, 'index'])->name('user.cart');
 

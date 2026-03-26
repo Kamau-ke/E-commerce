@@ -15,7 +15,7 @@
                      @endif
  
             <!-- Signup Form -->
-            <form class="space-y-4" action="{{ route('registerUser') }}" method="POST">
+            <form class="space-y-4" action="{{ route('user.register') }}" method="POST">
 
                 @csrf
                

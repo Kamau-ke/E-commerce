@@ -12,7 +12,7 @@
                 @enderror 
 
             <!-- Login Form -->
-            <form class="space-y-4" action="{{ route('login') }}" method="POST">
+            <form class="space-y-4" action="{{ route('user.login') }}" method="POST">
                 @csrf
                 <!-- Email Input -->
                 <div>

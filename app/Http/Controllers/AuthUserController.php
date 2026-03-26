@@ -34,6 +34,7 @@ class AuthUserController extends Controller
        $user=User::create([
         'name'=>$request->name,
         'email'=>$request->email,
+        'role'=>'customer',
         'password'=>Hash::make($request->password)
        ]);
 
@@ -58,6 +59,7 @@ class AuthUserController extends Controller
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
+
             return redirect()->intended('/');
         }
 
@@ -70,7 +72,7 @@ class AuthUserController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('login');
+        return redirect()->route('showLogin');
     }
     
 }
