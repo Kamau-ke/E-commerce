@@ -88,7 +88,7 @@
             <div class="mt-6 text-center">
                 <p class="text-gray-600">
                     Don't have an account? 
-                    <a href="{{ route('showRegister') }}" class="text-indigo-600 hover:text-indigo-700 font-semibold">Sign up</a>
+                    <a href="{{ route('register') }}" class="text-indigo-600 hover:text-indigo-700 font-semibold">Sign up</a>
                 </p>
             </div>
         </div>

@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\AuthUserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
+
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ProductController;
 
 use Illuminate\Support\Facades\Route;
@@ -11,16 +13,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })
-->middleware('auth')
 ->name('home');
 
-Route::get('/user/signup', [AuthUserController::class, 'showRegister' ])->name('showRegister');
+Route::get('/user/signup', [AuthUserController::class, 'showRegister' ])->name('register');
 Route::post('/user/register', [AuthUserController::class, 'register'])->name('user.register');
 
 
-Route::get('/user/login', [AuthUserController::class, 'showLogin'])->name('showLogin');
+Route::get('/user/login', [AuthUserController::class, 'showLogin'])->name('login');
 Route::post('/users/login', [AuthUserController::class, 'login'])->name('user.login');
-Route::post('/user/logout', [AuthUserController::class,'logout'])->name('user.logout');
+Route::post('/user/logout', [LogoutController::class, 'logout'])->name('logout');
 
 Route::get('/user/cart',[CartController::class, 'index'])->name('user.cart');
 
