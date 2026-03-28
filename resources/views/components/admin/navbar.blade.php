@@ -6,7 +6,7 @@
                     <button id="menuToggle" class="lg:hidden text-gray-600 hover:text-gray-900 mr-4">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
-                    <h1 class="text-2xl font-bold text-indigo-600">ModernShop Admin</h1>
+                    <a href="{{ route('home') }}" class="text-2xl font-bold text-indigo-600">ModernShop</a>
                 </div>
                 
                 <!-- Right Side Icons -->

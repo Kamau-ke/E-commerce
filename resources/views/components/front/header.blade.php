@@ -64,6 +64,17 @@
                                 <i class="fas fa-heart w-4 text-center text-gray-400"></i>
                                 Wishlist
                             </a>
+                            {{-- check if user is admin --}}
+                             @if(Auth::user()->role === 'admin')
+                                <div class="border-t border-gray-100 mt-1 pt-1">
+                                    <a href="{{ route('admin.dashboard') }}"
+                                    class="flex items-center gap-3 px-4 py-2.5 text-sm text-indigo-600 hover:bg-indigo-50 transition-colors font-medium">
+                                        <i class="fas fa-gauge w-4 text-center text-indigo-400"></i>
+                                        Admin Dashboard
+                                    </a>
+                                </div>
+                            @endif
+                            
                             <div class="border-t border-gray-100 mt-1 pt-1">
                                 <div class="flex items-center gap-3 px-4 py-2.5 text-sm text-red-500 hover:bg-red-50 transition-colors cursor-pointer">
                                     <form action="{{ route('logout') }}" method="POST">
