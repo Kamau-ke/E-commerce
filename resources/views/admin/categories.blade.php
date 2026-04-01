@@ -607,6 +607,8 @@
                         let messages = Object.values(errors).flat().join('<br>');
                         showCategoryMessage(messages, 'error');
                     } else {
+                        console.log("status", xhr.status);
+                        console.log("response", xhr.responseText);
                         showCategoryMessage('Something went wrong. Please try again.', 'error');
                     }
                 },

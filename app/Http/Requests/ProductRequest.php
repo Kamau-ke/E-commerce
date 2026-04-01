@@ -26,7 +26,13 @@ class ProductRequest extends FormRequest
             "name"=> "required|min:3",
             "price"=> "required",
             "sale_price"=>"required",
-            "description"=>"required|min:5"
+            "description"=>"required|min:5",
+            "category_id"=>"required|exists:categories,id",
+            "brand"=>"required",
+            "tags"=>"required",
+            "weight"=>"required",
+            "quantity"=>"required"
+
         ];
     }
 }

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('price');
             $table->integer('sale_price');
             $table->string('description');
-            $table->string('rating');
+            $table->integer('rating')->default(0);
             $table->string('brand');
             $table->string('tags');
             $table->double('weight')->default(0.5);

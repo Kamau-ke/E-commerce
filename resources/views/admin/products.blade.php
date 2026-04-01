@@ -1,3 +1,4 @@
+@use('App\Models\Category');
 <x-layouts.admin title="Products">
     <div id="products-section" class="content-section">
                 <div class="flex justify-between items-center mb-6">
@@ -135,7 +136,7 @@
                 </div>
             </div>
 
-            <div id="productModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 overflow-y-auto">
+    <div id="productModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 overflow-y-auto">
         <div class="flex items-center justify-center min-h-screen p-4">
             <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
                 <div class="p-6 border-b flex justify-between items-center sticky top-0 bg-white">
@@ -169,29 +170,33 @@
                             <label class="block text-sm font-medium text-gray-700 mb-2">Category *</label>
                             <select name="category_id" id="productCategory" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
                                 <option value="">Select Category</option>
-                                <option value="1">Men Fashion</option>
+                                @foreach (Category::all() as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                               
+                                {{-- <option value="1">Men Fashion</option>
                                 <option value="2">Women Fashion</option>
                                 <option value="3">Footwear</option>
-                                <option value="4">Accessories</option>
+                                <option value="4">Accessories</option> --}}
                             </select>
                         </div>
 
                         <!-- Price -->
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Price ($) *</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Price (Kes) *</label>
                             <input type="number" name="price" id="productPrice" required step="0.01" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="0.00">
                         </div>
 
                         <!-- Sale Price -->
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Sale Price ($)</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Sale Price (Kes)</label>
                             <input type="number" name="sale_price" id="productSalePrice" step="0.01" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="0.00">
                         </div>
 
                         <!-- Stock Quantity -->
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Stock Quantity *</label>
-                            <input type="number" name="stock" id="productStock" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="0">
+                            <input type="number" name="quantity" id="productStock" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="0">
                         </div>
 
                        
@@ -204,7 +209,7 @@
                         </div>
 
                         <!-- Product Images -->
-                        <div class="md:col-span-2">
+                        {{-- <div class="md:col-span-2">
                             <label class="block text-sm font-medium text-gray-700 mb-2">Product Images</label>
                             <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-indigo-500 transition">
                                 <input type="file" name="images[]" id="productImages" multiple accept="image/*" class="hidden" onchange="previewImages(event)">
@@ -215,7 +220,7 @@
                                 </label>
                             </div>
                             <div id="imagePreview" class="grid grid-cols-4 gap-4 mt-4"></div>
-                        </div>
+                        </div> --}}
 
                         <!-- Additional Fields -->
                         <div>
@@ -256,8 +261,6 @@
             document.getElementById('productForm').reset();
             document.getElementById('productId').value = '';
             document.getElementById('formMethod').value = 'POST';
-            
-            document.getElementById('imagePreview').innerHTML = '';
             document.getElementById('productModal').classList.remove('hidden');
         }
 
@@ -280,7 +283,6 @@
                 success: function(response) {
                     showResponseMessage(response.message, 'success');
                     $('#productForm')[0].reset();
-                    $('#imagePreview').addClass('hidden');
                 },
                 error: function(xhr) {
                     if (xhr.status === 422) {
@@ -289,6 +291,8 @@
                         let messages = Object.values(errors).flat().join('<br>');
                         showResponseMessage(messages, 'error');
                     } else {
+                        console.log("status", xhr.status);
+                        console.log("response", xhr.responseText);
                         showResponseMessage('Something went wrong. Please try again.', 'error');
                     }
                 },

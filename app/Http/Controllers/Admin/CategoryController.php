@@ -18,7 +18,7 @@ class CategoryController extends Controller
         $validated= $request->validate([
             "name"=> "min:3|required",
         ]);
-        $category=Category::create($validated);
+        Category::create($validated);
         
         return response()->json([
             "status"=> "success",
@@ -26,4 +26,8 @@ class CategoryController extends Controller
         ], 201);
 
     }
+
+    // public function showCategories(){
+    //     $categories=Category::
+    // }
 }

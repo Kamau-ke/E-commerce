@@ -16,6 +16,7 @@ class Product extends Model
     protected $fillable = [
         'name',
         'category_id',
+        'user_id',
         'price',
         'sale_price',
         'description',
@@ -23,13 +24,11 @@ class Product extends Model
         'tags',
         'weight',
         'quantity',
-
-
     ];
 
-    // public function user():BelongsTo{
-    //     return $this->belongsTo(User::class);
-    // }
+    public function user():BelongsTo{
+        return $this->belongsTo(User::class);
+    }
 
     public function productImage():HasMany{
         return $this->hasMany(ProductImage::class);
