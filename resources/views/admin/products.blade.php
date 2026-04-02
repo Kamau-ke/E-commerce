@@ -209,7 +209,7 @@
                         </div>
 
                         <!-- Product Images -->
-                        {{-- <div class="md:col-span-2">
+                         <div class="md:col-span-2">
                             <label class="block text-sm font-medium text-gray-700 mb-2">Product Images</label>
                             <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-indigo-500 transition">
                                 <input type="file" name="images[]" id="productImages" multiple accept="image/*" class="hidden" onchange="previewImages(event)">
@@ -220,7 +220,7 @@
                                 </label>
                             </div>
                             <div id="imagePreview" class="grid grid-cols-4 gap-4 mt-4"></div>
-                        </div> --}}
+                        </div> 
 
                         <!-- Additional Fields -->
                         <div>

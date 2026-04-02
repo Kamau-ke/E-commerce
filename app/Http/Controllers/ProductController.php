@@ -33,9 +33,22 @@ class ProductController extends Controller
     {
         //
        
-        Product::create(array_merge($request->validated(),[
+       $products=Product::create(array_merge($request->validated(),[
             'user_id'=>Auth::id()
         ]));
+
+        if($request->hasFile('images')){
+            foreach($request->file('images') as $position=> $image){
+                $path=$image->store('products', 'public');
+                $products->images()->create([
+                    'image_path'=> $path,
+                    'position'=> $position
+
+                ]);
+
+            }
+        }
+
         return response()->json([
         'status'=>'success',    
         'message'=>'product created successfully']

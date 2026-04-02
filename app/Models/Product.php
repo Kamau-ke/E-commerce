@@ -24,13 +24,14 @@ class Product extends Model
         'tags',
         'weight',
         'quantity',
+        'image'
     ];
 
     public function user():BelongsTo{
         return $this->belongsTo(User::class);
     }
 
-    public function productImage():HasMany{
+    public function images():HasMany{
         return $this->hasMany(ProductImage::class);
     }
 

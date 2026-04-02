@@ -28,6 +28,7 @@ class ProductRequest extends FormRequest
             "sale_price"=>"required",
             "description"=>"required|min:5",
             "category_id"=>"required|exists:categories,id",
+            "image" => "nullable|image|mimes:jpeg,png,jpg,gif|max:10240",
             "brand"=>"required",
             "tags"=>"required",
             "weight"=>"required",
