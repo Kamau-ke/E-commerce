@@ -125,16 +125,17 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
-                            <!-- Sample Data Row 1 -->
-                            <tr class="hover:bg-gray-50">
+                            
+                            @foreach ($categories as $category)
+                                <tr class="hover:bg-gray-50">
                                 <td class="px-6 py-4">
                                     <div class="flex items-center">
                                         <div class="h-10 w-10 rounded flex items-center justify-center bg-gradient-to-br from-pink-400 to-rose-500">
                                             <i class="fas fa-tshirt text-white"></i>
                                         </div>
                                         <div class="ml-4">
-                                            <div class="text-sm font-medium text-gray-900">Women's Fashion</div>
-                                            <div class="text-sm text-gray-500">womens-fashion</div>
+                                            <div class="text-sm font-medium text-gray-900">{{$category->name}}</div>
+                                            <div class="text-sm text-gray-500">{{$category->name}}</div>
                                         </div>
                                     </div>
                                 </td>
@@ -142,7 +143,7 @@
                                     Clothing, Accessories & More
                                 </td>
                                 <td class="px-6 py-4 text-sm">
-                                    <span class="font-medium">45</span>
+                                    <span class="font-medium">{{count($category->product)  }}</span>
                                 </td>
                                 <td class="px-6 py-4">
                                     <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
@@ -154,7 +155,7 @@
                                         <i class="fas fa-star"></i>
                                     </span>
                                 </td>
-                                <td class="px-6 py-4 text-sm">1</td>
+                                <td class="px-6 py-4 text-sm">{{ $category->id }}</td>
                                 <td class="px-6 py-4 text-sm">
                                     <button onclick="editCategory(1)" class="text-indigo-600 hover:text-indigo-900 mr-3">
                                         <i class="fas fa-edit"></i>
@@ -164,166 +165,11 @@
                                     </button>
                                 </td>
                             </tr>
+                            @endforeach
+                            
 
-                            <!-- Sample Data Row 2 -->
-                            <tr class="hover:bg-gray-50">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center">
-                                        <div class="h-10 w-10 rounded flex items-center justify-center bg-gradient-to-br from-blue-400 to-indigo-500">
-                                            <i class="fas fa-user-tie text-white"></i>
-                                        </div>
-                                        <div class="ml-4">
-                                            <div class="text-sm font-medium text-gray-900">Men's Fashion</div>
-                                            <div class="text-sm text-gray-500">mens-fashion</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-gray-600 max-w-xs truncate">
-                                    Shirts, Pants & Accessories
-                                </td>
-                                <td class="px-6 py-4 text-sm">
-                                    <span class="font-medium">38</span>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
-                                        Active
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-sm">
-                                    <span class="text-gray-300">
-                                        <i class="far fa-star"></i>
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-sm">2</td>
-                                <td class="px-6 py-4 text-sm">
-                                    <button onclick="editCategory(2)" class="text-indigo-600 hover:text-indigo-900 mr-3">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button onclick="deleteCategory(2)" class="text-red-600 hover:text-red-900">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-
-                            <!-- Sample Data Row 3 -->
-                            <tr class="hover:bg-gray-50">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center">
-                                        <div class="h-10 w-10 rounded flex items-center justify-center bg-gradient-to-br from-purple-400 to-pink-500">
-                                            <i class="fas fa-shoe-prints text-white"></i>
-                                        </div>
-                                        <div class="ml-4">
-                                            <div class="text-sm font-medium text-gray-900">Footwear</div>
-                                            <div class="text-sm text-gray-500">footwear</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-gray-600 max-w-xs truncate">
-                                    Shoes, Sneakers & Sandals
-                                </td>
-                                <td class="px-6 py-4 text-sm">
-                                    <span class="font-medium">62</span>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
-                                        Active
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-sm">
-                                    <span class="text-yellow-500">
-                                        <i class="fas fa-star"></i>
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-sm">3</td>
-                                <td class="px-6 py-4 text-sm">
-                                    <button onclick="editCategory(3)" class="text-indigo-600 hover:text-indigo-900 mr-3">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button onclick="deleteCategory(3)" class="text-red-600 hover:text-red-900">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-
-                            <!-- Sample Data Row 4 -->
-                            <tr class="hover:bg-gray-50">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center">
-                                        <div class="h-10 w-10 rounded flex items-center justify-center bg-gradient-to-br from-amber-400 to-orange-500">
-                                            <i class="fas fa-gem text-white"></i>
-                                        </div>
-                                        <div class="ml-4">
-                                            <div class="text-sm font-medium text-gray-900">Accessories</div>
-                                            <div class="text-sm text-gray-500">accessories</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-gray-600 max-w-xs truncate">
-                                    Jewelry, Bags & Watches
-                                </td>
-                                <td class="px-6 py-4 text-sm">
-                                    <span class="font-medium">29</span>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
-                                        Active
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-sm">
-                                    <span class="text-gray-300">
-                                        <i class="far fa-star"></i>
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-sm">4</td>
-                                <td class="px-6 py-4 text-sm">
-                                    <button onclick="editCategory(4)" class="text-indigo-600 hover:text-indigo-900 mr-3">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button onclick="deleteCategory(4)" class="text-red-600 hover:text-red-900">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-
-                            <!-- Sample Data Row 5 -->
-                            <tr class="hover:bg-gray-50">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center">
-                                        <div class="h-10 w-10 rounded flex items-center justify-center bg-gradient-to-br from-green-400 to-emerald-500">
-                                            <i class="fas fa-mobile-alt text-white"></i>
-                                        </div>
-                                        <div class="ml-4">
-                                            <div class="text-sm font-medium text-gray-900">Electronics</div>
-                                            <div class="text-sm text-gray-500">electronics</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-gray-600 max-w-xs truncate">
-                                    Phones, Laptops & Gadgets
-                                </td>
-                                <td class="px-6 py-4 text-sm">
-                                    <span class="font-medium">54</span>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800">
-                                        Inactive
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-sm">
-                                    <span class="text-yellow-500">
-                                        <i class="fas fa-star"></i>
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-sm">5</td>
-                                <td class="px-6 py-4 text-sm">
-                                    <button onclick="editCategory(5)" class="text-indigo-600 hover:text-indigo-900 mr-3">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button onclick="deleteCategory(5)" class="text-red-600 hover:text-red-900">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
+                           
+                           
                         </tbody>
                     </table>
                 </div>

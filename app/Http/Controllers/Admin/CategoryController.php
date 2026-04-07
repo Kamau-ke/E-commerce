@@ -11,7 +11,9 @@ class CategoryController extends Controller
     //
 
     public function index(){
-        return view("admin.categories");
+        $categories = Category::with('product')
+                        ->get();
+        return view("admin.categories", compact("categories"));
     }
 
     public function store(Request $request){
