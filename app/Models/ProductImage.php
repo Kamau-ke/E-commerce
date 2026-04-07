@@ -13,5 +13,6 @@ class ProductImage extends Model
         'image_path', 
         'position'
     ];
+
     
 }

@@ -1,4 +1,4 @@
-@use('App\Models\Category');
+@use('App\Models\Category')
 <x-layouts.admin title="Products">
     <div id="products-section" class="content-section">
                 <div class="flex justify-between items-center mb-6">
@@ -26,21 +26,26 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200">
-                                <tr class="hover:bg-gray-50">
+                                {{-- @dd($products) --}}
+                                @foreach ($products as  $product)
+                               
+                                    <tr class="hover:bg-gray-50">
                                     <td class="px-6 py-4">
                                         <div class="flex items-center">
-                                            <div class="h-10 w-10 bg-gray-200 rounded flex items-center justify-center">
-                                                <i class="fas fa-image text-gray-400"></i>
+                                            <div class="h-10 w-10 rounded flex items-center justify-center">
+                                                {{-- <i class="fas fa-image text-gray-400"></i> --}}
+                                                    <img src="{{ asset('storage/'.$product->primaryImage?->image_path) }}"/>
+                                              
                                             </div>
                                             <div class="ml-4">
-                                                <div class="text-sm font-medium text-gray-900">Classic White Sneakers</div>
+                                                <div class="text-sm font-medium text-gray-900">{{$product->name}}</div>
                                                 <div class="text-sm text-gray-500">SKU: SNK-001</div>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="px-6 py-4 text-sm">Footwear</td>
-                                    <td class="px-6 py-4 text-sm font-medium">$79.99</td>
-                                    <td class="px-6 py-4 text-sm">45</td>
+                                    <td class="px-6 py-4 text-sm">{{$product->category->name}}</td>
+                                    <td class="px-6 py-4 text-sm font-medium">KSH:{{$product->sale_price}}</td>
+                                    <td class="px-6 py-4 text-sm">{{ $product->quantity }}</td>
                                     <td class="px-6 py-4">
                                         <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Active</span>
                                     </td>
@@ -56,66 +61,8 @@
                                         </button>
                                     </td>
                                 </tr>
-                                <tr class="hover:bg-gray-50">
-                                    <td class="px-6 py-4">
-                                        <div class="flex items-center">
-                                            <div class="h-10 w-10 bg-gray-200 rounded flex items-center justify-center">
-                                                <i class="fas fa-image text-gray-400"></i>
-                                            </div>
-                                            <div class="ml-4">
-                                                <div class="text-sm font-medium text-gray-900">Leather Backpack</div>
-                                                <div class="text-sm text-gray-500">SKU: BAG-002</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4 text-sm">Accessories</td>
-                                    <td class="px-6 py-4 text-sm font-medium">$149.99</td>
-                                    <td class="px-6 py-4 text-sm">23</td>
-                                    <td class="px-6 py-4">
-                                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-                                    </td>
-                                    <td class="px-6 py-4 text-sm">
-                                        <button onclick="viewProduct(2)" class="text-blue-600 hover:text-blue-900 mr-3">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button onclick="editProduct(2)" class="text-indigo-600 hover:text-indigo-900 mr-3">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                        <button onclick="deleteProduct(2)" class="text-red-600 hover:text-red-900">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-gray-50">
-                                    <td class="px-6 py-4">
-                                        <div class="flex items-center">
-                                            <div class="h-10 w-10 bg-gray-200 rounded flex items-center justify-center">
-                                                <i class="fas fa-image text-gray-400"></i>
-                                            </div>
-                                            <div class="ml-4">
-                                                <div class="text-sm font-medium text-gray-900">Wireless Headphones</div>
-                                                <div class="text-sm text-gray-500">SKU: AUD-003</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4 text-sm">Electronics</td>
-                                    <td class="px-6 py-4 text-sm font-medium">$199.99</td>
-                                    <td class="px-6 py-4 text-sm text-red-600 font-medium">0</td>
-                                    <td class="px-6 py-4">
-                                        <span class="px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">Out of Stock</span>
-                                    </td>
-                                    <td class="px-6 py-4 text-sm">
-                                        <button onclick="viewProduct(3)" class="text-blue-600 hover:text-blue-900 mr-3">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button onclick="editProduct(3)" class="text-indigo-600 hover:text-indigo-900 mr-3">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                        <button onclick="deleteProduct(3)" class="text-red-600 hover:text-red-900">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
+                                @endforeach    
+                                
                             </tbody>
                         </table>
                     </div>
