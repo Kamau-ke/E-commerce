@@ -79,7 +79,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl font-bold text-center mb-12">Shop by Category</h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <x-front.category-card/>
+               @foreach ($categories as $category)
+                   <x-front.category-card :name="$category->name"/>
+               @endforeach
+                    
+               
+                
             </div>
         </div>
     </section>
