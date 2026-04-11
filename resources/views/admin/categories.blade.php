@@ -140,7 +140,7 @@
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-600 max-w-xs truncate">
-                                    Clothing, Accessories & More
+                                    {{$category->description ?? 'Explore latest trends'}}
                                 </td>
                                 <td class="px-6 py-4 text-sm">
                                     <span class="font-medium">{{count($category->product)  }}</span>
@@ -294,17 +294,7 @@
                             </div>
                         </div>
 
-                        <!-- Display Order -->
-                        {{-- <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Display Order</label>
-                            <input type="number" 
-                                   name="order" 
-                                   id="categoryOrder" 
-                                   min="0"
-                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" 
-                                   placeholder="0">
-                            <p class="text-xs text-gray-500 mt-1">Lower numbers appear first</p>
-                        </div> --}}
+                        
 
                         <!-- Status & Featured -->
                         <div class="grid grid-cols-2 gap-4">
@@ -423,6 +413,20 @@
         function closeDeleteModal() {
             document.getElementById('deleteModal').classList.add('hidden');
         }
+
+        // preview image
+
+         function previewImage(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    document.getElementById('previewImg').src = e.target.result;
+                    document.getElementById('imagePreview').classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+         }
 
         // submit category
         $('#categoryForm').on('submit', function(e) {

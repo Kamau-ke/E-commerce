@@ -20,7 +20,7 @@ class ProductController extends Controller
                             ->get();
                         
 
-        return view('admin.products', ['products'=>$products]);
+        return view('admin.products', compact('products'));
     }
 
     /**
@@ -57,7 +57,7 @@ class ProductController extends Controller
         return response()->json([
         'status'=>'success',    
         'message'=>'product created successfully']
-        , 200);
+        , 201);
 
     }
 

@@ -19,8 +19,20 @@ class CategoryController extends Controller
     public function store(Request $request){
         $validated= $request->validate([
             "name"=> "min:3|required",
+            "description"=>'required|min:5'
         ]);
-        Category::create($validated);
+        $category=Category::create($validated);
+
+        if($request->hasFile('image')){
+            $image=$request->file('image');
+            $path=$image->store('category', 'public');
+
+            $category->image()->create([
+                'image_path'=>$path,
+                'position'=>0
+            ]);
+        }
+        
         
         return response()->json([
             "status"=> "success",
