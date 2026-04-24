@@ -12,14 +12,12 @@ class Category extends Model
     use HasFactory;
     //
 
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['name', 'description', 'image_path'];
 
     public function product():HasMany{
         return $this->hasMany(Product::class);
     }
 
-    public function image():HasOne{
-        return $this->hasOne(ProductImage::class);
-    }
+
 
 }

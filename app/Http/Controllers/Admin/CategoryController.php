@@ -22,15 +22,10 @@ class CategoryController extends Controller
             "description"=>'required|min:5'
         ]);
         $category=Category::create($validated);
-
-        if($request->hasFile('image')){
-            $image=$request->file('image');
-            $path=$image->store('category', 'public');
-
-            $category->image()->create([
-                'image_path'=>$path,
-                'position'=>0
-            ]);
+        
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('category', 'public');
+            $category->update(['image_path' => $path]);
         }
         
         

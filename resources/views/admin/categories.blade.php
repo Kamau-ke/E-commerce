@@ -130,9 +130,15 @@
                                 <tr class="hover:bg-gray-50">
                                 <td class="px-6 py-4">
                                     <div class="flex items-center">
-                                        <div class="h-10 w-10 rounded flex items-center justify-center bg-gradient-to-br from-pink-400 to-rose-500">
-                                            <i class="fas fa-tshirt text-white"></i>
-                                        </div>
+                                      {{-- @dd($category->image_path) --}}
+                                        @if($category->image_path)
+                                                <img src="{{ asset('storage/' . $category->image_path) }}" 
+                                                    alt="{{ $category->name }}"
+                                                    class="h-10 w-10 rounded object-cover">
+                                            @else
+                                                {{-- Fallback if no image --}}
+                                                <span class="text-white text-sm font-bold">{{ substr($category->name, 0, 1) }}</span>
+                                         @endif
                                         <div class="ml-4">
                                             <div class="text-sm font-medium text-gray-900">{{$category->name}}</div>
                                             <div class="text-sm text-gray-500">{{$category->name}}</div>
@@ -449,6 +455,7 @@
                     showCategoryMessage(response.message, 'success');
                     $('#categoryForm')[0].reset();
                     $('#imagePreview').addClass('hidden');
+
                 },
                 error: function(xhr) {
                     if (xhr.status === 422) {
