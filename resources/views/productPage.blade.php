@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classic White Sneakers - ModernShop</title>
+    <title>{{$product->name}}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -24,9 +24,9 @@
             <div class="flex items-center space-x-2 text-sm">
                 <a href="ecommerce-home.html" class="text-gray-500 hover:text-indigo-600">Home</a>
                 <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
-                <a href="#" class="text-gray-500 hover:text-indigo-600">Footwear</a>
+                <a href="#" class="text-gray-500 hover:text-indigo-600">{{ $product->name }}</a>
                 <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
-                <span class="text-gray-900 font-medium">Classic White Sneakers</span>
+                <span class="text-gray-900 font-medium">{{$product->name}}</span>
             </div>
         </div>
     </div>
@@ -72,7 +72,7 @@
             <div class="bg-white rounded-lg shadow-sm p-6">
                 <!-- Title & Rating -->
                 <div class="mb-4">
-                    <h1 class="text-3xl font-bold text-gray-900 mb-2">Classic White Sneakers</h1>
+                    <h1 class="text-3xl font-bold text-gray-900 mb-2">{{ $product->name }}</h1>
                     <div class="flex items-center space-x-4">
                         <div class="flex items-center">
                             <div class="flex text-yellow-400">
@@ -114,9 +114,7 @@
                 <div class="mb-6">
                     <h3 class="font-semibold text-gray-900 mb-2">Description</h3>
                     <p class="text-gray-600">
-                        Experience ultimate comfort and style with our Classic White Sneakers. Crafted with premium materials 
-                        and designed for everyday wear, these sneakers combine timeless elegance with modern functionality. 
-                        Perfect for casual outings or daily commutes.
+                      {{ $product->description }}
                     </p>
                 </div>
 
@@ -152,7 +150,7 @@
 
                 <!-- Quantity -->
                 <div class="mb-6">
-                    <h3 class="font-semibold text-gray-900 mb-3">Quantity</h3>
+                    <h3 class="font-semibold text-gray-900 mb-3">{{ $product->quantity }}</h3>
                     <div class="flex items-center border border-gray-300 rounded-lg w-32">
                         <button onclick="decreaseQty()" class="px-4 py-2 hover:bg-gray-100">
                             <i class="fas fa-minus text-sm"></i>

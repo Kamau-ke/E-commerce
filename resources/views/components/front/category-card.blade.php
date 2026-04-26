@@ -1,4 +1,4 @@
-@props(['name','image'])
+@props(['name','image', 'id'])
     <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition cursor-pointer group">
                     <div class="h-64 bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center">
                        @if ($image)
@@ -10,9 +10,7 @@
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">{{ $name }}</h3>
                         {{-- <p class="text-gray-600 mb-4">Explore the latest trends</p> --}}
-                        <a href="#" class="text-indigo-600 font-semibold hover:text-indigo-700">Shop Now →</a>
+                        <a href="{{ route('categories.show', $id) }}" class="text-indigo-600 font-semibold hover:text-indigo-700">Shop Now →</a>
                     </div>
 </div>
-
-
-                
+              

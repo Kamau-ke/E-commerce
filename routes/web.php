@@ -40,6 +40,10 @@ Route::post('/admin/category', [CategoryController::class,'store'])->name('categ
 
 Route::post('/admin/product',[ProductController::class, 'store'])->name('product.store');
 
+// Products from categories
+
+Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+
 
 
 
