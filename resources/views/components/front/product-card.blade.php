@@ -1,5 +1,5 @@
 @props(['product'])
-<a href="{{ route('product.show',$product->id) }}" class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition group">
+<a href="{{ route('product.show', $product) }}" class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition group">
                     <div class="relative h-64 bg-gray-200 flex items-center justify-center overflow-hidden">
                         <i class="fas fa-image text-6xl text-gray-400"></i>
                         <div class="absolute top-4 right-4">

@@ -24,12 +24,12 @@ Route::post('/user/logout', [LogoutController::class, 'logout'])->name('logout')
 Route::get('/user/cart',[CartController::class, 'index'])->name('user.cart');
 
 Route::get('/products', [ProductController::class, 'index'])->name('product.index');
-Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
+Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
 
 Route::middleware(['auth','checkRole'])->group(function () {
     Route::get('/admin', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get("/admin/products", [ProductController::class, 'index'])->name('admin.products');
-    Route::get('/admin/categories', [CategoryController::class, 'index'])->name('admin.categories');
+    Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 });
 
 

@@ -151,15 +151,15 @@
                 <!-- Products Grid -->
                 <div class="flex-1">
 
-                    @if($products->isEmpty())
+                @if($products->isEmpty())
                         <!-- Empty State -->
                         <div class="bg-white rounded-2xl shadow-sm flex flex-col items-center justify-center py-24 text-center px-8">
                             <div class="bg-indigo-100 w-20 h-20 rounded-full flex items-center justify-center mb-5">
                                 <i class="fas fa-box-open text-3xl text-indigo-400"></i>
                             </div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">No Products Found</h3>
-                            <p class="text-gray-500 mb-6">Try adjusting your filters or browse other categories.</p>
-                            <a href="{{ route('categories.index') }}"
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">No Products under category this yet</h3>
+                            <p class="text-gray-500 mb-6">Try other categories.</p>
+                            <a href="{{ route('home') }}"
                                class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition">
                                 Browse Categories
                             </a>
@@ -167,30 +167,14 @@
                     @else
 
                         <!-- Active Filters Summary -->
-                        @if(request()->hasAny(['min_price','max_price','in_stock','sort']))
-                            <div class="flex flex-wrap items-center gap-2 mb-5">
-                                <span class="text-sm text-gray-500 mr-1">Active filters:</span>
-                                @if(request('min_price') || request('max_price'))
-                                    <span class="inline-flex items-center gap-1 bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full">
-                                        ${{ request('min_price', '0') }} – ${{ request('max_price', '∞') }}
-                                        <a href="{{ request()->fullUrlWithoutQuery(['min_price','max_price']) }}" class="ml-1 hover:text-indigo-900"><i class="fas fa-times"></i></a>
-                                    </span>
-                                @endif
-                                @if(request('in_stock'))
-                                    <span class="inline-flex items-center gap-1 bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full">
-                                        In Stock
-                                        <a href="{{ request()->fullUrlWithoutQuery(['in_stock']) }}" class="ml-1 hover:text-indigo-900"><i class="fas fa-times"></i></a>
-                                    </span>
-                                @endif
-                            </div>
-                        @endif
-
-                        <!-- Grid -->
-                        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-                            @foreach($products as $product)
-                                <x-front.product-card :product="$product"/>
-                            @endforeach
-                        </div>
+                       
+                    @foreach($products as $product)
+                        <x-front.product-card :product="$product"/>
+                     @endforeach
+                    
+                            
+                @endif       
+                      
 
                         <!-- Pagination -->
                         {{-- @if($products->hasPages())
@@ -199,7 +183,7 @@
                             </div>
                         @endif --}}
 
-                    @endif
+                  
                 </div>
             </div>
         </div>

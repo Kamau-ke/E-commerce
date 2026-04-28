@@ -98,7 +98,7 @@
             </div>
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Product 1 -->
-                <x-front.product-card/>
+                {{-- <x-front.product-card /> --}}
 
             </div>
         </div>

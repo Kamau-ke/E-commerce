@@ -14,7 +14,7 @@
                 </a>
                 
                 <!-- Categories -->
-                <a href="{{ route('admin.categories') }}"  class="nav-link flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition">
+                <a href="{{ route('categories.index') }}"  class="nav-link flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-lg transition">
                     <i class="fas fa-tags mr-3 text-lg"></i>
                     <span class="font-medium">Categories</span>
                 </a>
