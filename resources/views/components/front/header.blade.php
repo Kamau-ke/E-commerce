@@ -37,19 +37,20 @@
 
                     <!-- Profile Dropdown -->
                     <div class="relative" id="profileWrapper">
+                        
                         <button id="profileBtn" class="flex items-center gap-2 text-gray-700 hover:text-indigo-600 focus:outline-none transition-colors">
                             <i class="fas fa-user text-xl"></i>
                             <span class="hidden sm:inline text-sm font-medium">Account</span>
                             <i id="chevronIcon" class="hidden sm:inline fas fa-chevron-down text-xs transition-transform duration-200"></i>
                         </button>
-
+                       
                         <!-- Dropdown -->
                         <div id="profileModal"
                              class="hidden absolute right-0 mt-3 w-52 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
                             <div class="px-4 py-2 border-b border-gray-100 mb-1">
                                 <p class="text-xs text-gray-400 uppercase tracking-wider font-semibold">My Account</p>
                             </div>
-                            <a href="account.html"
+                            <a href="{{route('user.profile')}}"
                                class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">
                                 <i class="fas fa-user-circle w-4 text-center text-gray-400"></i>
                                 Account

@@ -23,7 +23,7 @@
                         <a href="{{ url('/') }}" class="hover:text-white transition">Home</a>
                         <span><i class="fas fa-chevron-right text-xs"></i></span>
                         {{-- <a href="{{ route('categories.index') }}" class="hover:text-white transition">Categories</a> --}}
-                        <span><i class="fas fa-chevron-right text-xs"></i></span>
+                        {{-- <span><i class="fas fa-chevron-right text-xs"></i></span> --}}
                         <span class="text-white font-medium">{{ $category->name }}</span>
                     </nav>
 
@@ -161,7 +161,7 @@
                             <p class="text-gray-500 mb-6">Try other categories.</p>
                             <a href="{{ route('home') }}"
                                class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition">
-                                Browse Categories
+                                Go Back Home
                             </a>
                         </div>
                     @else

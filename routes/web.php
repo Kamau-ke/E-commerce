@@ -7,7 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\UserProfile;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])
@@ -22,6 +22,7 @@ Route::post('/users/login', [AuthUserController::class, 'login'])->name('user.lo
 Route::post('/user/logout', [LogoutController::class, 'logout'])->name('logout');
 
 Route::get('/user/cart',[CartController::class, 'index'])->name('user.cart');
+Route::get('/user/profile', [UserProfile::class, 'show'])->name('user.profile');
 
 Route::get('/products', [ProductController::class, 'index'])->name('product.index');
 Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
