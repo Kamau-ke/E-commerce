@@ -18,5 +18,20 @@ class UserProfile extends Controller
         return view('profilePage', compact('user', 'country'));
     }
 
-    
+    public function update(Request $request){
+        $user=Auth::user();
+       $validated= $request->validate([
+            'name'  => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'phone' => 'nullable|string|max:20',
+            'gender'  => 'nullable|in:female,male,other,prefer_not',
+            'address' => 'nullable|string|max:255'
+        ]);
+
+        
+        $user->fill($validated);
+        $user->save();
+
+        return redirect()->back()->with('success', 'Updated Successfully');
+    }
 }

@@ -21,8 +21,12 @@ Route::get('/user/login', [AuthUserController::class, 'showLogin'])->name('login
 Route::post('/users/login', [AuthUserController::class, 'login'])->name('user.login');
 Route::post('/user/logout', [LogoutController::class, 'logout'])->name('logout');
 
-Route::get('/user/cart',[CartController::class, 'index'])->name('user.cart');
-Route::get('/user/profile', [UserProfile::class, 'show'])->name('user.profile');
+Route::middleware('auth')->group(function(){
+    Route::get('/user/cart',[CartController::class, 'index'])->name('user.cart');
+    Route::get('/user/profile', [UserProfile::class, 'show'])->name('user.profile');
+    Route::patch('/user/update', [UserProfile::class, 'update'])->name('user.update');
+});
+
 
 Route::get('/products', [ProductController::class, 'index'])->name('product.index');
 Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');

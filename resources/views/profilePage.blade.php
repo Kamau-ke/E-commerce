@@ -328,13 +328,13 @@
                     </div>
                 @endif
 
-                <form  method="POST">
+                <form action="{{ route('user.update') }}" method="POST">
                     @csrf
                     @method('PATCH')
                     <div class="grid md:grid-cols-2 gap-5">
                         <div>
                             <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Names</label>
-                            <input type="text" name="first_name"
+                            <input type="text" name="name"
                                    value="{{$user->name}}"
                                    class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-800 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 transition">
                         </div>
@@ -356,11 +356,10 @@
                             <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Gender</label>
                             <select name="gender"
                                     class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-800 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 transition bg-white">
-                                <option value="">Select gender</option>
-                                <option value="female">Female</option>
-                                <option value="male" >Male</option>
-                                <option value="other">Other</option>
-                                <option value="prefer_not">Prefer not to say</option>
+                                <option value="female" {{ $user->gender == 'female'     ? 'selected' : '' }}>Female</option>
+                                <option value="male" {{ $user->gender == 'male' ? 'selected' : '' }}>Male</option>
+                                <option value="other" {{ $user->gender == 'other'? 'selected' : '' }}>Other</option>
+                                <option value="prefer_not"{{ $user->gender == 'prefer_not' ? 'selected' : '' }}>Prefer not to say</option>
                             </select>
                         </div>
                         
