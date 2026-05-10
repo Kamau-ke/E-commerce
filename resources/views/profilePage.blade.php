@@ -477,7 +477,7 @@
                             <p class="text-sm font-medium text-red-600">Delete Account</p>
                             <p class="text-xs text-gray-500 mt-0.5">Permanently delete your account and all data</p>
                         </div>
-                        <form  method="POST"
+                        <form action="{{ route('user.delete') }}" method="POST"
                               onsubmit="return confirm('Are you sure? This cannot be undone.')">
                             @csrf @method('DELETE')
                             <button type="submit"

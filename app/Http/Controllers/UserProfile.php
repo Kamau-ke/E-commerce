@@ -57,4 +57,17 @@ class UserProfile extends Controller
         ->with('active_tab', 'security');
 
     }
+
+    public function deleteAccount(Request $request){
+        $user=Auth::user();
+
+        Auth::logout($user);
+
+        $user->delete();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/')->with('success', 'Your account has been deleted.');
+    }
 }
