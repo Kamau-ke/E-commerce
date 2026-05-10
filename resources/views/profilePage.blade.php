@@ -312,13 +312,13 @@
                     <i class="fas fa-pen text-indigo-500"></i> Edit Profile
                 </h2>
 
-                @if (session('success'))
+                @if (session('success_profile'))
                     <div class="mb-4 bg-green-50 border border-green-200 text-green-700 text-sm rounded-xl px-4 py-3 flex items-center gap-2">
-                        <i class="fas fa-check-circle"></i> {{ session('success') }}
+                        <i class="fas fa-check-circle"></i> {{ session('success_profile') }}
                     </div>
                 @endif
 
-                @if ($errors->any())
+                @if ($errors->hasBag('default') && $errors->default->any())
                     <div class="mb-4 bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl px-4 py-3">
                         <ul class="list-disc list-inside space-y-1">
                             @foreach ($errors->all() as $error)
@@ -401,9 +401,25 @@
                 <h2 class="text-lg font-semibold text-gray-800 mb-5 flex items-center gap-2">
                     <i class="fas fa-lock text-indigo-500"></i> Change Password
                 </h2>
-                <form  method="POST" class="max-w-md space-y-4">
+
+                @if (session('success_password'))
+                    <div class="mb-4 bg-green-50 border border-green-200 text-green-700 text-sm rounded-xl px-4 py-3 flex items-center gap-2">{{ session('success_password') }}</div>
+                @endif
+
+                @if ($errors->hasBag('password') && $errors->password->any())
+                    <div class="mb-4 bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl px-4 py-3">
+                        <ul class="list-disc list-inside space-y-1">
+                            @foreach ($errors->password->all() as $error)
+                            <p>{{ $error }}</p>
+                        @endforeach
+                        </ul>
+                       
+                    </div>
+                @endif
+              
+                <form action="{{ route('user.password') }}" method="POST" class="max-w-md space-y-4">
                     @csrf
-                    @method('PUT')
+                    @method('PATCH')
                     <div>
                         <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Current Password</label>
                         <input type="password" name="current_password" placeholder="••••••••"
@@ -495,13 +511,12 @@
         }
 
         // Auto-open edit tab if there are validation errors
-        @if ($errors->any())
+        @if (session('active_tab'))
+            switchTab('{{ session('active_tab') }}');
+        @elseif ($errors->hasBag('default') && $errors->default->any())
             switchTab('edit');
-        @endif
-
-        // Auto-open edit tab if success message is present
-        @if (session('success'))
-            switchTab('edit');
+        @elseif ($errors->hasBag('password') && $errors->password->any())
+            switchTab('security');
         @endif
     </script>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Stevebauman\Location\Facades\Location;
 
 class UserProfile extends Controller
@@ -32,6 +33,28 @@ class UserProfile extends Controller
         $user->fill($validated);
         $user->save();
 
-        return redirect()->back()->with('success', 'Updated Successfully');
+        return redirect()->back()->with('success_profile', 'Profile updated.')
+        ->with('active_tab', 'edit');
+    }
+
+    public function updatePassword(Request $request){
+        $user=Auth::user();
+        $request->validate([
+            'current_password'=>'required',
+            'password'=>'required|min:8|max:20|confirmed'
+        ]);
+
+        if(!Hash::check($request->current_password, $user->password)){
+            return redirect()->back()->withErrors(['current_password' => 'Your current password is incorrect'], 'password')
+            ->with('active_tab', 'security');
+        }
+
+        $user->update([
+            'password'=>Hash::make($request->password)
+        ]);
+
+        return redirect()->back()->with('success_password', 'Password updated successfully.')
+        ->with('active_tab', 'security');
+
     }
 }

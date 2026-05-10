@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/user/cart',[CartController::class, 'index'])->name('user.cart');
     Route::get('/user/profile', [UserProfile::class, 'show'])->name('user.profile');
     Route::patch('/user/update', [UserProfile::class, 'update'])->name('user.update');
+    Route::patch('/user/security/password', [UserProfile::class, 'updatePassword'])->name('user.password');
 });
 
 
