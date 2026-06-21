@@ -43,5 +43,9 @@ class Product extends Model
     public function primaryImage(){
         return $this->hasOne(ProductImage::class,'product_id')->oldest();
     }
+
+    public function carts():HasMany{
+        return $this->hasMany(Cart::class);
+    }
     
 }

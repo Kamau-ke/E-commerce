@@ -55,10 +55,10 @@
                                 <i class="fas fa-user-circle w-4 text-center text-gray-400"></i>
                                 Account
                             </a>
-                            <a href="orders.html"
+                            <a href="{{route('user.cart')}}"
                                class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">
                                 <i class="fas fa-box w-4 text-center text-gray-400"></i>
-                                Orders
+                                Cart
                             </a>
                             <a href="wishlist.html"
                                class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">
